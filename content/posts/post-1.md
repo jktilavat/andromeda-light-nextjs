@@ -5,7 +5,7 @@ author:
   name: Other
   avatar: /images/author/abdullah.jpg
 date: 2022-04-04T05:00:00.000Z
-draft: false
+draft: true
 ---
 
 Laoreet mauris odio ut nec. Nisl, sed adipiscing dignissim arcu placerat ornare pharetra nec in. Ultrices in nisl potenti vitae tempus. Auctor consectetur luctus eu in amet sagittis. Dis urna, vel hendrerit convallis Senectus feugiat faucibus commodo egestas leo vitae in morbi. Enim arcu dignissim mauris, eu, eget
