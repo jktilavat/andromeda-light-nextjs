@@ -4,6 +4,14 @@ html {
 
 body {
   @apply text-[15px] bg-body font-primary font-normal leading-relaxed text-text;
+
+  /* IE / old Edge */
+  -ms-overflow-style: none
+}
+
+/* Chrome, Safari, Edge */
+body::-webkit-scrollbar {
+  display: none;
 }
 
 h1,

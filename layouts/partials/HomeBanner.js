@@ -204,7 +204,7 @@ const HomeBanner = ({ banner: bannerData, brands }) => {
                       <ImageFallback
                         className="object-contain"
                         src={brand}
-                        sizes="100vw"
+                        sizes="(max-width: 992px) 30vw, 18vw"
                         alt=""
                         fill={true}
                         priority={true}
