@@ -6,6 +6,7 @@ import TwSizeIndicator from "@layouts/components/TwSizeIndicator";
 import Footer from "@layouts/partials/Footer";
 import Header from "@layouts/partials/Header";
 import "../styles/style.scss";
+import FloatingCalculator from "../layouts/partials/FloatingCalculator";
 
 export default function RootLayout({ children }) {
   // import google font css
@@ -54,6 +55,7 @@ export default function RootLayout({ children }) {
         />
       </head>
       <body suppressHydrationWarning={true}>
+        <FloatingCalculator />
         <TwSizeIndicator />
         <Header />
         {children}

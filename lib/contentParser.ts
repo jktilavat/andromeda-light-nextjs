@@ -2,22 +2,36 @@ import parseMDX from "@lib/utils/mdxParser";
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
+import { MDXRemoteSerializeResult } from "next-mdx-remote";
+
+// ✅ Generic return type
+export type ListPageResult<T> = {
+  frontmatter: T;
+  content: string;
+  mdxContent: MDXRemoteSerializeResult;
+};
 
 // get list page data, ex: _index.md
-export const getListPage = async (filePath) => {
+export const getListPage = async <T>(
+  filePath: string
+): Promise<ListPageResult<T>> => {
   const pageData = fs.readFileSync(filePath, "utf-8");
   const pageDataParsed = matter(pageData);
+
   const notFoundPage = fs.readFileSync("content/404.md", "utf-8");
   const notFoundDataParsed = matter(notFoundPage);
-  let frontmatter, content;
+
+  let frontmatter: T;
+  let content: string;
 
   if (pageDataParsed) {
     content = pageDataParsed.content;
-    frontmatter = pageDataParsed.data;
+    frontmatter = pageDataParsed.data as T; // 👈 important
   } else {
     content = notFoundDataParsed.content;
-    frontmatter = notFoundDataParsed.data;
+    frontmatter = notFoundDataParsed.data as T;
   }
+
   const mdxContent = await parseMDX(content);
 
   return {
@@ -27,8 +41,14 @@ export const getListPage = async (filePath) => {
   };
 };
 
+type SinglePage<T> = {
+  frontmatter: T;
+  slug: string;
+  content: string;
+};
+
 // get all single pages, ex: blog/post.md
-export const getSinglePage = (folder) => {
+export const getSinglePage = <T>(folder: string): SinglePage<T>[] => {
   const filesPath = fs.readdirSync(folder);
   const sanitizeFiles = filesPath.filter((file) => file.includes(".md"));
   const filterSingleFiles = sanitizeFiles.filter((file) =>
@@ -57,7 +77,7 @@ export const getSinglePage = (folder) => {
 };
 
 // get a regular page data from many pages, ex: about.md
-export const getRegularPage = async (slug) => {
+export const getRegularPage = async (slug: string) => {
   const publishedPages = getSinglePage("content");
   const pageData = publishedPages.filter((data) => data.slug === slug);
   const notFoundPage = fs.readFileSync("content/404.md", "utf-8");

@@ -1,7 +1,7 @@
 ---
 banner:
   title: "Andromeda is the most intuitive </br> way to prototype Designs"
-  image: /images/banner-app.png
+  image: /images/hero-banner.png
   link:
     label: Get Premium Version
     href: "https://themefisher.com/products/andromeda-nextjs"

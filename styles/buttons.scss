@@ -17,3 +17,7 @@
 .btn-outline-primary {
   @apply border-primary border bg-transparent hover:bg-primary hover:text-white;
 }
+
+.floating-calc-btn{
+  @apply border border-gray-300 shadow-xl shadow-gray-200 rounded-lg p-2 flex items-center justify-center hover:bg-orange-100 transition;
+}
